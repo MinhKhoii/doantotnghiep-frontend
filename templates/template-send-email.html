@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even){background-color: #f2f2f2}
+        
+        th {
+          background-color: #04AA6D;
+          color: white;
+        }
+        </style>
+</head>
+
+<body>
+    <p>Xin chào: {{email}},</p>
+    <p>Cảm ơn bạn đã lựa chọn sản phẩm của chúng tôi! Dưới đây là chi tiết đơn hàng của bạn:</p>
+    <table cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Sản phẩm</th>
+            <!-- <th>Hình ảnh</th> -->
+            <th>Số lượng</th>
+            <th>Giá</th>
+        </tr>
+        {{#each products}}
+        <tr>
+            <td>{{concat ProductName ColorName SizeName}}</td>
+            <!-- <td><img src="{{ProductPath}}" alt="{{ProductName}}" width="100" height="100"></td> -->
+            <td>{{Quantity}}</td>
+            <td>{{formatNumber ProductPrice}}</td>
+        </tr>
+        {{/each}}
+    </table>
+    {{#if bill.HinhThucThanhToan}}
+    <p>Phương thức thanh toán: {{bill.HinhThucThanhToan}}</p>
+    {{/if}}
+    {{#if bill.TenVanChuyen}}
+    <p>Phương thức vận chuyển: {{bill.TenVanChuyen}}( {{formatNumber bill.GiaVanChuyen}})</p>
+    {{/if}}
+    {{#if bill.TenPhieu}}
+    <p>Giảm giá: {{bill.TenPhieu}}</p>
+    {{/if}}
+    <p>Tổng cộng: {{formatNumber total_price}}</p>
+    <p>Ngày đặt: {{bill.NgayTao}}</p>
+    <p>Chúng tôi hy vọng bạn hài lòng với sản phẩm của mình.Sản phẩm sẽ sớm được gửi đến quý khách.</p>
+    <p>Trân trọng!</p>
+    <p>Mọi thông tin phản hồi xin gửi về địa chỉ nhathoang07032002@gmail.com</p>
+</body>
+
+</html>
